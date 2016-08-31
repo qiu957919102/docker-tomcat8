@@ -24,5 +24,5 @@ USER tomcat
 EXPOSE 8009 8080
 ENTRYPOINT ["java","-Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager","-XX:+DisableExplicitGC","-XX:+UseParallelGC","-Xloggc:/var/log/gc.log","-verbose:gc","-XX:+PrintGCDetails","-XX:+HeapDumpOnOutOfMemoryError","-XX:HeapDumpPath=/var/log","-Djava.awt.headless=true","-Dsun.rmi.dgc.client.gcInterval=3600000","-Dsun.rmi.dgc.server.gcInterval=3600000","-Dsun.lang.ClassLoader.allowArraySyntax=true","-XX:+CMSClassUnloadingEnabled","-Djava.endorsed.dirs=/usr/local/tomcat/endorsed","-classpath","/usr/local/tomcat/bin/bootstrap.jar:/usr/local/tomcat/bin/tomcat-juli.jar","-Dcatalina.base=/usr/local/tomcat","-Dcatalina.home=/usr/local/tomcat","-Djava.io.tmpdir=/usr/local/tomcat/temp"]
 
-CMD ["-XX:ThreadStackSize=256","-Xms1024m","-Xmx1024m","-XX:PermSize=512m","-XX:MaxPermSize=512m","org.apache.catalina.startup.Bootstrap","start"]
+CMD ["-XX:ThreadStackSize=256k","-Xms1024m","-Xmx1024m","-XX:PermSize=512m","-XX:MaxPermSize=512m","org.apache.catalina.startup.Bootstrap","start"]
 
